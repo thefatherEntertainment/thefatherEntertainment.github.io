@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>VAULT-TEC TERMINAL</title>
+<title>T.F. Entertainment</title>
 
 <style>
-/* ===== FALLOUT TERMINAL STYLE ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -68,6 +67,7 @@ body::before {
   50% { opacity: 1; }
   100% { opacity: 0.98; }
 }
+
 #terminal {
   animation: flicker 0.15s infinite;
 }
@@ -80,7 +80,7 @@ body::before {
 <script>
 const terminal = document.getElementById("terminal");
 
-const PROMPT = "USER@VAULT-TEC:~$";
+const PROMPT = "user@tfe:~$";
 let history = [];
 let historyIndex = 0;
 
@@ -116,11 +116,9 @@ function newPrompt() {
       newPrompt();
     }
 
-    if (e.key === "ArrowUp") {
-      if (historyIndex > 0) {
-        historyIndex--;
-        input.value = history[historyIndex];
-      }
+    if (e.key === "ArrowUp" && historyIndex > 0) {
+      historyIndex--;
+      input.value = history[historyIndex];
     }
 
     if (e.key === "ArrowDown") {
@@ -156,8 +154,9 @@ function runCommand(cmd) {
 
     case "cat":
       if (args[1] === "readme.txt") {
-        printLine("WELCOME TO VAULT-TEC TERMINAL");
-        printLine("SYSTEM STATUS: STABLE");
+        printLine("T.F. ENTERTAINMENT SYSTEM");
+        printLine("TERMINAL v0.0.1");
+        printLine("STATUS: OPERATIONAL");
       } else {
         printLine("FILE NOT FOUND");
       }
@@ -180,11 +179,13 @@ function runCommand(cmd) {
   }
 }
 
-/* Boot Text */
-printLine("VAULT-TEC INDUSTRIES (TM)");
-printLine("ROBCO TERMINAL OS v4.12");
+/* Boot Sequence */
+printLine("T.F. ENTERTAINMENT");
+printLine("TERMINAL v0.0.1");
 printLine("--------------------------------");
-printLine("TYPE 'help' FOR AVAILABLE COMMANDS");
+printLine("INITIALIZING SYSTEM...");
+printLine("READY.");
+printLine("TYPE 'help' FOR COMMAND LIST");
 printLine("");
 newPrompt();
 </script>
